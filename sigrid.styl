@@ -1,0 +1,35 @@
+//===============
+//  sigrid.styl
+//===============
+
+// Import the fallback values
+@import 'defaults'
+
+// `x` is used as a variable name for the classes/placeholder selectors
+// since it's short.
+x = unquote('.')
+
+if use-classes is false
+  x = unquote('$')
+
+//--------
+//  Grid
+//--------
+
+// 1. A hack to make negative margins work in IE8.
+
+{x}grid
+  margin-left: unquote('-' + sigrid-gutter)
+  position: relative // [1]
+  &:before,
+  &:after
+    content: '\0020'
+    display: block
+    height: 0
+    overflow: hidden
+  &:after
+    clear: both
+
+{x}grid--item
+  padding-left: sigrid-gutter
+  float: left
